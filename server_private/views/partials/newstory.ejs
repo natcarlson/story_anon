@@ -1,0 +1,43 @@
+<div id="new-story-modal" class="modal">
+    <div class="modal-content">
+        <h4>New Story</h4>
+        <form id="new-story-form">
+            <div class="row">
+                <div class="col s6">
+                    <input type="text" name="title" placeholder="Title">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <input type="text" name="date" placeholder="Date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <input id="new-story-textbox" type="textbox" name="story" placeholder="Your Story">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <input type="text" name="tags" placeholder="Tags">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <input type="radio" name="public" value="true">Public
+                    <input type="radio" name="public" value="false">Private
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" value="Submit" class="waves-effect waves-yellow btn-flat modal-action modal-close">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--
+title: {type: String},
+story: {type: String},
+date: {type: String},
+tags: {type: String} -->

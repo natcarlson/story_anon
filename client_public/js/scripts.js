@@ -96,6 +96,15 @@ function setLogOutHandler() {
 
 
 
+//----------  CREATE STORY FUNCTIONS  ----------//
+
+function setStoryFormHandler() {
+  $()
+}
+
+
+
+
 
 
 
