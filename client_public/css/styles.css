@@ -1,0 +1,50 @@
+body {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+.nav-wrapper {
+  background-color: rgb(77, 149, 255);
+}
+
+.brand-logo {
+  /*text-align: left;*/
+}
+
+/*#new-story-textbox {
+  width: 300px;
+  height: 100px;
+}*/
+
+.user-login {
+  width: 33%;
+  margin-top: 10%;
+  margin-left: 33%;
+  margin-right: -33%;
+  background-color: white;
+}
+
+#login-button {
+  background-color: rgb(77, 149, 255);
+}
+
+#header {
+  margin-top: 0;
+  width: 100%;
+  height: 100px;
+  background-color: rgb(77, 149, 255);
+}
+
+.about {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: -25%;
+  margin-top: 1em;
+}
+
+.page-heading {
+  margin-top: 2em;
+  margin-left: 25%;
+}
