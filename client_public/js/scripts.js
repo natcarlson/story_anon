@@ -98,9 +98,51 @@ function setLogOutHandler() {
 
 //----------  CREATE STORY FUNCTIONS  ----------//
 
-function setStoryFormHandler() {
-  $()
+function createStory(storyData, callback) {
+  // callback = callback || function(){};
+  $.ajax( {
+    method: 'post',
+    url: '/api/stories',
+    data: storyData,
+    success: function(data) {
+      callback(data);
+      console.log('success!', data);
+      // var story = data.story;
+
+    }
+  });
 }
+
+function setNewStoryFormHandler() {
+  $('#new-story-form').on('submit', function(e) {
+    e.preventDefault();
+    var formObj = $(this).serializeObject();
+    console.log(formObj);
+
+    $('#new-story-form').closeModal();
+    createStory(formObj, function(story) {
+      console.log("form response: ", formObj);
+      $('#new-story-form').each(function() {
+        this.reset();
+      });
+    });
+  });
+}
+
+    // var storyData = formObj;
+    // createStory(storyData, function(story) {
+    //   updateStoriesAndViews();
+      //}
+
+
+
+// $('#user-signup-modal').closeModal();
+// createUser(formObj, function(user) {
+//   console.log("form response:", user);
+//   // $("#user-signup-form").val();
+//   $( '#user-signup-form' ).each(function(){
+//     this.reset();
+//   });
 
 
 
@@ -114,6 +156,7 @@ $(function() {
   setCreateUserFormHandler();
   setLogInFormHandler();
   setLogOutHandler();
+  setNewStoryFormHandler();
 
   $('.modal-trigger').leanModal();
 
