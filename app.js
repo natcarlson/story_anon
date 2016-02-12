@@ -7,10 +7,11 @@ var app = express();
 var morgan = require('morgan');
 app.use( morgan('dev') );
 
-app.use(express.static('./client_public'));
+app.use(express.static(__dirname + './client_public'));
+app.set('views', (__dirname + '/server_private/views'));
 
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
@@ -46,16 +47,18 @@ var userStories = require('./server_private/routes/pages/userstories');
 app.use('/userstories', userStories);
 
 //About view
-var about = require('.server_private/routes/pages/about');
+var about = require('./server_private/routes/pages/about');
 app.use('/about', about);
 
 
 //Service
 
-//API
+//API's
+//Users API
 var users = require('./server_private/routes/api/users');
-api.use('/api/users', users);
+app.use('/api/users', users);
 
+//Stories API
 var stories = require('./server_private/routes/api/stories');
 app.use('/api/stories', stories);
 
@@ -67,5 +70,5 @@ app.use('/api/stories', stories);
 // ---------------------
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
-  console.log('this ship has sailed on port ' + port);
+  console.log('this ship has sailed from port ' + port);
 });

@@ -3,15 +3,14 @@
 // ----------------------
 var express = require('express');
 var router = express.Router();
+var Story = require('../../models/story');
+
 
 
 
 // --------------------
 // ****** Route! ******
 // --------------------
-router.get('/', function(req, res) {
-  res.render('index');
-});
 
 
 
