@@ -73,6 +73,7 @@ function setLogInFormHandler() {
 
     logIn(usernameTry, passwordTry, function(data) {
       console.log('log in complete? ', data);
+      window.location="/allstories"
     });
   });
 }
@@ -82,9 +83,8 @@ function setLogInFormHandler() {
 
 $(function() {
   setCreateUserFormHandler();
-
   setLogInFormHandler();
 
   $('.modal-trigger').leanModal();
-  // $('#user-signup-modal').closeModal();
+
 });
