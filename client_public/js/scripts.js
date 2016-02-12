@@ -81,9 +81,30 @@ function setLogInFormHandler() {
 
 
 
+//----------  USER LOGOUT FUNCTIONS  ----------//
+
+//Logout user
+function setLogOutHandler() {
+  $('#log-out').on('click', function(e) {
+    e.preventDefault();
+    $.removeCookie('token');
+    window.location="/";
+    // updateStoriesAndViews();
+  });
+}
+
+
+
+
+
+
+
+
+
 $(function() {
   setCreateUserFormHandler();
   setLogInFormHandler();
+  setLogOutHandler();
 
   $('.modal-trigger').leanModal();
 
