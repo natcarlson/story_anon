@@ -7,7 +7,7 @@ var app = express();
 var morgan = require('morgan');
 app.use( morgan('dev') );
 
-app.use(express.static(__dirname + './client_public'));
+app.use(express.static(__dirname + '/client_public'));
 app.set('views', (__dirname + '/server_private/views'));
 
 var bodyParser = require('body-parser');
