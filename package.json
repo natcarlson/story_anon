@@ -12,6 +12,7 @@
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.0",
     "cookie-parser": "^1.4.1",
+    "crypto": "0.0.3",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "kerberos": "0.0.18",
