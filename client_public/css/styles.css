@@ -48,3 +48,19 @@ body {
   margin-top: 2em;
   margin-left: 25%;
 }
+
+#render-allstory {
+  width: 49%;
+  background-color: rgb(242, 242, 242);;
+  border: 1px solid gray;
+  margin-left: 5px;
+  margin-right: 5px;
+  /*margin-bottom: 5px;*/
+
+  /*padding-top: 1em;*/
+  /*padding-bottom: 1em;*/
+  padding-left: 1em;
+  padding-right: 1em;
+
+
+}

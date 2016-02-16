@@ -17,13 +17,16 @@
 
 <!-- Templates -->
 <script id="allstories-template" type="text/x-handlebars-template">
-  {{each stories}}
-    <div>
-      <h4> {{ title }} </h4>
-      <h5> {{ date }} </h5>
-      <h5> {{ tag1 }} </h5>
-      <h5> {{ tag2 }} </h5>
-      <h5> {{ tag3 }} </h5>
-      <h5> {{ story }} </h5>
-    </div>
+  {{#grouped_each 2 stories}}
+    <div class="row">
+    {{#each this}}
+      <div class="col s12 m6 l6" id="render-allstory">
+        <h6><b>{{title}}</b></h6>
+        <h6>{{date}}</h6>
+        <h6>{{story}}</h6>
+        <h6>{{tags:tag1}} {{tags:tag2}} {{tags:tag3}}</h6>
+      </div>
+    {{/each}}
+  </div>
+  {{/grouped_each}}
 </script>

@@ -159,20 +159,38 @@ function getAllStories(callback) {
   $.ajax( {
     url: '/api/stories',
     success: function(data) {
-      var stories = data.stories || [];
-      callback(stories);
+      renderAllStories(data)
     }
   });
+
 }
 
-function renderAllStories(storiesArray) {
+function renderAllStories(data) {
   var source = $("#allstories-template").html();
   var template = Handlebars.compile(source);
-  var context = {stories: storiesArray};
-  var allstoriesElement = template( context );
-  return allStoriesElement;
+  var allStories = template(data);
+  console.log(data)
+  $('#allstories').html(allStories);
 }
 
+
+
+function handlebarsHelper(){
+  Handlebars.registerHelper('grouped_each', function(every, context, options){
+    var out = "", subcontext = [], i;
+    if (context && context.length > 0){
+      for (i=0; i < context.length; i++){
+        if (i>0 && i % every === 0){
+          out += options.fn(subcontext);
+          subcontext = [];
+        }
+        subcontext.push(context[i]);
+      }
+      out += options.fn(subcontext);
+    }
+    return out;
+  });
+}
   // $(document).ready;
     // $list.empty();
     // var story;
@@ -187,11 +205,10 @@ function renderAllStories(storiesArray) {
 
 function updateAllStoriesAndViews() {
   $(document).ready(function() {
-    getAllStories(function(stories) {
-      $('#allstories').empty();
-      var allStoriesElement = renderAllStories(stories);
-      $('#allstories').append(allStoriesElement);
-    });
+    getAllStories()
+      // $('#allstories').empty();
+      // var allStoriesElement = renderAllStories(stories);
+      // $('#allstories').append(allStoriesElement);
     if($.cookie('token')) {
       $('.user-only').show();
     } else {
@@ -207,6 +224,7 @@ function updateAllStoriesAndViews() {
 
 $(function() {
   setCreateUserFormHandler();
+  handlebarsHelper();
   setLogInFormHandler();
   setLogOutHandler();
   setNewStoryFormHandler();
