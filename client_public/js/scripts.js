@@ -192,11 +192,11 @@ function updateAllStoriesAndViews() {
       var allStoriesElement = renderAllStories(stories);
       $('#allstories').append(allStoriesElement);
     });
-    // if($.cookie('token')) {
-    //   $('.user-only').show();
-    // } else {
-    //   $('.user-only').hide();
-    // }
+    if($.cookie('token')) {
+      $('.user-only').show();
+    } else {
+      $('.user-only').hide();
+    }
   });
 }
 
