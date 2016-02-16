@@ -21,7 +21,7 @@ app.use(loadUser);
 
 app.set('view engine', 'ejs');
 
-var mongoPath = 'mongodb://localhost/story_anon';
+var mongoPath = process.env.MONGOLAB_URI || 'mongodb://localhost/story_anon';
 var mongoose = require('mongoose');
 mongoose.connect(mongoPath);
 

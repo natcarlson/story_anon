@@ -21,6 +21,18 @@ router.use(function(req, res, next) {
   }
 });
 
+
+//----------  GET ALL STORIES  ----------//
+router.get('/', function(req, res) {
+  Story.find({}, function(err, databaseStories) {
+    res.json({stories: databaseStories});
+  });
+});
+
+
+//----------  GET ONLY USER STORIES  ----------//
+
+
 //----------  CREATE NEW STORY  ----------//
 router.post('/', function(req, res) {
   var storyData = req.body;

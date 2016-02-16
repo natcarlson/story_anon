@@ -16,7 +16,11 @@ var StorySchema = mongoose.Schema( {
   title: {type: String},
   story: {type: String},
   date: {type: String},
-  tags: {type: String},
+  tags: {
+    tag1: {type: String},
+    tag2: {type: String},
+    tag3: {type: String}
+  },
   public: {type: String}
 });
 

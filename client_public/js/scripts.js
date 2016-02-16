@@ -4,8 +4,8 @@ console.log('..... loaded .....');
 
 
 //----------  CREATE NEW USER FUNCTIONS  ----------//
-//
-// //Ajax call to post new user data in users api
+
+//Ajax call to post new user data in users api
 function createUser(userData, callback) {
   $.ajax( {
     method: 'post',
@@ -16,8 +16,8 @@ function createUser(userData, callback) {
     }
   });
 }
-//
-// //Obtain new user data from #user-signup-form
+
+//Obtain new user data from #user-signup-form
 function setCreateUserFormHandler(){
   $(document).ready(function(){
       $('#user-signup-form').on('submit', function(e) {
@@ -119,12 +119,17 @@ function setNewStoryFormHandler() {
     var formObj = $(this).serializeObject();
     console.log(formObj);
 
+    $('#new-story-form').each(function() {
+      this.reset();
+    });
+
     $('#new-story-form').closeModal();
     createStory(formObj, function(story) {
       console.log("form response: ", formObj);
-      $('#new-story-form').each(function() {
-        this.reset();
-      });
+      // $("#new-story-form").val();
+      // $('#new-story-form').each(function() {
+      //   this.reset();
+      // });
     });
   });
 }
@@ -147,6 +152,54 @@ function setNewStoryFormHandler() {
 
 
 
+//----------  RENDER ALL STORIES FUNCTIONS  ----------//
+
+function getAllStories(callback) {
+  // callback = callback || function(){};
+  $.ajax( {
+    url: '/api/stories',
+    success: function(data) {
+      var stories = data.stories || [];
+      callback(stories);
+    }
+  });
+}
+
+function renderAllStories(storiesArray) {
+  var source = $("#allstories-template").html();
+  var template = Handlebars.compile(source);
+  var context = {stories: storiesArray};
+  var allstoriesElement = template( context );
+  return allStoriesElement;
+}
+
+  // $(document).ready;
+    // $list.empty();
+    // var story;
+    // for (var i = 0; i < stories.length; i++) {
+    //   story = stories[i];
+    //   $storyView = renderStory(story);
+    //   $list.append($storyView);
+    // }
+
+  // });
+
+
+function updateAllStoriesAndViews() {
+  $(document).ready(function() {
+    getAllStories(function(stories) {
+      $('#allstories').empty();
+      var allStoriesElement = renderAllStories(stories);
+      $('#allstories').append(allStoriesElement);
+    });
+    // if($.cookie('token')) {
+    //   $('.user-only').show();
+    // } else {
+    //   $('.user-only').hide();
+    // }
+  });
+}
+
 
 
 
@@ -157,6 +210,7 @@ $(function() {
   setLogInFormHandler();
   setLogOutHandler();
   setNewStoryFormHandler();
+  updateAllStoriesAndViews()
 
   $('.modal-trigger').leanModal();
 
