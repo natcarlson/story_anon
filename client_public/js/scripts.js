@@ -53,6 +53,8 @@ function logIn(usernameTry, passwordTry, callback) {
     success: function(data) {
       $.cookie('token', data.token);
       console.log('token', data.token);
+      $.cookie('userId', data.userId)
+      console.log('id', data.userId)
       callback(data);
     }
   });
@@ -88,6 +90,7 @@ function setLogOutHandler() {
   $('#log-out').on('click', function(e) {
     e.preventDefault();
     $.removeCookie('token');
+    $.removeCookie('userId');
     window.location="/";
     // updateStoriesAndViews();
   });
@@ -132,7 +135,10 @@ function setNewStoryFormHandler() {
       //   this.reset();
       // });
     });
+
+    getUserStories() 
   });
+
 }
 
     // var storyData = formObj;
@@ -223,10 +229,11 @@ function updateAllStoriesAndViews() {
 
 //----------  RENDER A SINGLE USER'S STORIES FUNCTIONS  ----------//
 
-function getUserStories(callback) {
+function getUserStories() {
   // callback = callback || function(){};
+  var currentUser = $.cookie('userId');
   $.ajax( {
-    url: '/api/stories/users/'+ $.cookie()['userId'] +'/stories',
+    url: '/api/stories/' + currentUser,
     success: function(data) {
       renderUserStories(data)
     }
@@ -238,7 +245,7 @@ function renderUserStories(data) {
   var source = $("#userstories-template").html();
   var template = Handlebars.compile(source);
   var userStories = template(data);
-  console.log(data)
+
   $('#userstories').html(userStories);
 }
 

@@ -33,7 +33,7 @@ router.get('/', function(req, res) {
 
 //----------  GET ONLY A SINGLE USER'S STORIES  ----------//
 
-router.get('/users/:id/stories', function (req, res) {
+router.get('/:id', function (req, res) {
   Story.find({userId: req.params.id}, function (err, databaseUser) {
     res.json(databaseUser);
   });

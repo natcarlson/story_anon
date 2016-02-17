@@ -34,8 +34,9 @@ router.post('/authenticate', function(req, res) {
     databaseUser.authenticate(passwordTry, function(err, isMatch) {
       if(isMatch) {
         databaseUser.setToken(function() {
-          res.json({description: 'password is correct', token: databaseUser.token});
+          res.json({description: 'password is correct', token: databaseUser.token, userId: databaseUser._id});
           console.log('password is correct', databaseUser.token);
+          console.log('USERID: ', databaseUser._id)
         });
       } else {
         res.json({description: 'password is wrong'});
