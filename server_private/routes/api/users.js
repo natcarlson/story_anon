@@ -45,6 +45,13 @@ router.post('/authenticate', function(req, res) {
 });
 
 
+// router.get('/users/:id/stories', function (req, res) {
+//   Story.find({userId: req.params.id}, function (err, databaseUser) {
+//     res.json(databaseUser);
+//   });
+// });
+
+
 
 // ----------------------
 // ****** Exports! ******

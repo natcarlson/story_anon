@@ -7,18 +7,25 @@
   </head>
   <body>
     <% include ./partials/headers/header_userstories %>
-    <h4>User Stories</h4>
-    <br>
-    <br>
-    <a class="modal-trigger" href="#new-story-modal">Write a new story</a>
-    <% include ./partials/newstory %>
-    <% include ./partials/editstory %>
+
+    <div class="">
+      <a class="modal-trigger" href="#new-story-modal" id="new-story-link"><h5>Write a new story</h5></a>
+      <% include ./partials/newstory %>
+    </div>
+
+
 
     <section class="container">
+      <!-- <h5>Your Stories:</h5> -->
+
       <section id="userstories">
 
+        <% include ./partials/editstory %>
       </section>
     </section>
+
+
+
 
   </body>
 </html>
