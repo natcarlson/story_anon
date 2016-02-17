@@ -15,7 +15,8 @@
 <script src="/js/scripts.js" charset="utf-8"></script>
 
 
-<!-- Templates -->
+<!-- Render Stories Templates -->
+<!-- All Stories -->
 <script id="allstories-template" type="text/x-handlebars-template">
   {{#grouped_each 2 stories}}
     <div class="row">
@@ -29,4 +30,19 @@
     {{/each}}
   </div>
   {{/grouped_each}}
+</script>
+
+
+<!-- User Stories -->
+<script id="userstories-template" type="text/x-handlebars-template">
+  {{#each this}}
+    <div class="row">
+      <div class="col s12 m6 l6" id="render-userstory">
+        <h6><b>{{title}}</b></h6>
+        <h6>{{date}}</h6>
+        <h6>{{story}}</h6>
+        <h6>{{tags:tag1}} {{tags:tag2}} {{tags:tag3}}</h6>
+      </div>
+    </div>
+  {{/each}}
 </script>

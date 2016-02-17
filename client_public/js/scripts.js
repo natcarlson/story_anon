@@ -118,6 +118,7 @@ function setNewStoryFormHandler() {
     e.preventDefault();
     var formObj = $(this).serializeObject();
     console.log(formObj);
+    formObj['userId'] = $.cookie()['userId']
 
     $('#new-story-form').each(function() {
       this.reset();
@@ -220,6 +221,76 @@ function updateAllStoriesAndViews() {
 
 
 
+//----------  RENDER A SINGLE USER'S STORIES FUNCTIONS  ----------//
+
+function getUserStories(callback) {
+  // callback = callback || function(){};
+  $.ajax( {
+    url: '/api/stories/users/'+ $.cookie()['userId'] +'/stories',
+    success: function(data) {
+      renderUserStories(data)
+    }
+  });
+
+}
+
+function renderUserStories(data) {
+  var source = $("#userstories-template").html();
+  var template = Handlebars.compile(source);
+  var userStories = template(data);
+  console.log(data)
+  $('#userstories').html(userStories);
+}
+
+function updateUserStoriesAndViews() {
+  $(document).ready(function() {
+    getUserStories()
+      // $('#allstories').empty();
+      // var allStoriesElement = renderAllStories(stories);
+      // $('#allstories').append(allStoriesElement);
+    if($.cookie('token')) {
+      $('.user-only').show();
+    } else {
+      $('.user-only').hide();
+    }
+  });
+}
+
+
+
+// function handlebarsHelper(){
+//   Handlebars.registerHelper('grouped_each', function(every, context, options){
+//     var out = "", subcontext = [], i;
+//     if (context && context.length > 0){
+//       for (i=0; i < context.length; i++){
+//         if (i>0 && i % every === 0){
+//           out += options.fn(subcontext);
+//           subcontext = [];
+//         }
+//         subcontext.push(context[i]);
+//       }
+//       out += options.fn(subcontext);
+//     }
+//     return out;
+//   });
+// }
+  // $(document).ready;
+    // $list.empty();
+    // var story;
+    // for (var i = 0; i < stories.length; i++) {
+    //   story = stories[i];
+    //   $storyView = renderStory(story);
+    //   $list.append($storyView);
+    // }
+
+  // });
+
+
+
+
+
+
+
 
 
 $(function() {
@@ -228,7 +299,8 @@ $(function() {
   setLogInFormHandler();
   setLogOutHandler();
   setNewStoryFormHandler();
-  updateAllStoriesAndViews()
+  updateAllStoriesAndViews();
+  updateUserStoriesAndViews();
 
   $('.modal-trigger').leanModal();
 

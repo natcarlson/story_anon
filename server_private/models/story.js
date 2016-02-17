@@ -13,6 +13,11 @@ var crypto = require('crypto');
 // ---------------------
 var StorySchema = mongoose.Schema( {
   username: {type: String, required: true},
+  userId: {
+   type: mongoose.Schema.Types.ObjectId,
+   ref: 'User',
+   required: true
+  },
   title: {type: String},
   story: {type: String},
   date: {type: String},

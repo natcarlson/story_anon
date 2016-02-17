@@ -4,6 +4,7 @@
 var express = require('express');
 var router = express.Router();
 var Story = require('../../models/story');
+var User = require('../../models/user')
 
 
 
@@ -30,7 +31,19 @@ router.get('/', function(req, res) {
 });
 
 
-//----------  GET ONLY USER STORIES  ----------//
+//----------  GET ONLY A SINGLE USER'S STORIES  ----------//
+
+router.get('/users/:id/stories', function (req, res) {
+  Story.find({userId: req.params.id}, function (err, databaseUser) {
+    res.json(databaseUser);
+  });
+});
+
+// router.get('/'), function(req, res) {
+//   Story.find({}, function(err, databaseStories) {
+//     res.json({stories: databaseStories});
+//   });
+// });
 
 
 //----------  CREATE NEW STORY  ----------//
@@ -40,6 +53,7 @@ router.post('/', function(req, res) {
   console.log('here is the story', req.body);
   console.log('user data VVVV', req.user);
   newStory.username = req.user.username
+  debugger
   newStory.save(function(err, databaseStory) {
     console.log(err);
     res.json(databaseStory);
