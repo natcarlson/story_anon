@@ -27,7 +27,17 @@ var StorySchema = mongoose.Schema( {
     tag3: {type: String}
   },
   public: {type: String}
+
 });
+
+
+
+// StorySchema.pre('update', function(next) {
+//
+//     this.date = Date.now();
+//
+//   next();
+// });
 
 
 

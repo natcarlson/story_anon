@@ -136,7 +136,7 @@ function setNewStoryFormHandler() {
       // });
     });
 
-    getUserStories() 
+    getUserStories()
   });
 
 }
@@ -182,7 +182,7 @@ function renderAllStories(data) {
 
 
 
-function handlebarsHelper(){
+function handlebarsGroupHelper(){
   Handlebars.registerHelper('grouped_each', function(every, context, options){
     var out = "", subcontext = [], i;
     if (context && context.length > 0){
@@ -198,6 +198,17 @@ function handlebarsHelper(){
     return out;
   });
 }
+
+
+// function handlebarsReverseHelper() {
+//   Handlebars.registerHelper('reverse', function(arr) {
+//     arr.reverse();
+//   });
+// }
+
+
+
+
   // $(document).ready;
     // $list.empty();
     // var story;
@@ -302,7 +313,8 @@ function updateUserStoriesAndViews() {
 
 $(function() {
   setCreateUserFormHandler();
-  handlebarsHelper();
+  handlebarsGroupHelper();
+
   setLogInFormHandler();
   setLogOutHandler();
   setNewStoryFormHandler();
@@ -312,3 +324,5 @@ $(function() {
   $('.modal-trigger').leanModal();
 
 });
+
+// handlebarsReverseHelper();

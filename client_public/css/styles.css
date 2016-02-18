@@ -5,6 +5,19 @@ body {
   margin-left: 0px;
 }
 
+/*h4 {
+  font-size: 5.9vw;
+}*/
+h5 {
+  font-size: 2.3vh;
+}
+li {
+  font-size: 2.0vh;
+}
+#edit-modal-link {
+  font-size: 2.0vh;
+}
+
 .nav-wrapper {
   background-color: rgb(77, 149, 255);
 }
@@ -49,14 +62,18 @@ body {
   margin-left: 25%;
 }
 
-/*#allstories-template {
-  top: 10px;
-}*/
+.#allstories-container {
+  position: absolute;
+
+}
 
 #render-allstory {
+  position: relative;
+  top: 5%;
   width: 48%;
   background-color: rgb(242, 242, 242);
   border: 1px solid lightgray;
+  border-radius: 7px;
   margin-left: 5px;
   margin-top: 0;
   margin-bottom: 0;
@@ -66,15 +83,23 @@ body {
   color: rgb(100, 100, 100);
 }
 
-#new-story-link {
+.new-story-link-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 30%;
+  margin-right: -30%;
+  width: 40%;
   text-align: center;
   color: darkblue;
+  border: 2px solid darkblue;
+  border-radius: 7px;
 }
 
 #render-userstory {
   width: 100%;
   background-color: rgb(242, 242, 242);
   border: 1px solid lightgray;
+  border-radius: 7px;
   /*margin-left: 5px;
   margin-top: 0;
   margin-bottom: 0;
