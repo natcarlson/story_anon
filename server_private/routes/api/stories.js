@@ -39,11 +39,7 @@ router.get('/:id', function (req, res) {
   });
 });
 
-// router.get('/'), function(req, res) {
-//   Story.find({}, function(err, databaseStories) {
-//     res.json({stories: databaseStories});
-//   });
-// });
+
 
 
 //----------  CREATE NEW STORY  ----------//

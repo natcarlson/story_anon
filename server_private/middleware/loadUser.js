@@ -1,7 +1,7 @@
 var User = require('../models/user');
 
 function loadUser(req, res,next){
-  console.log('userID', req.cookies._id)
+  console.log('userID', req.cookies.userId)
   if (req.cookies.token) {
     User.findOne({ token: req.cookies.token}, function(err, databaseUser){
       req.user = databaseUser;

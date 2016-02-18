@@ -22,10 +22,14 @@
     <div class="row">
     {{#each this}}
       <div class="col s12 m6 l6" id="render-allstory">
-        <h6><b>{{title}}</b></h6>
-        <h6>{{date}}</h6>
-        <h6>{{story}}</h6>
-        <h6>{{tags:tag1}} {{tags:tag2}} {{tags:tag3}}</h6>
+        <ul>
+          <li><b>{{title}}</b></li>
+          <li>{{date}}</li>
+          <li>{{story}}</li>
+          {{#tags}}
+          <li>{{this.tag1}} {{this.tag2}} {{this.tag3}}</li>
+          {{/tags}}
+        </ul>
       </div>
     {{/each}}
   </div>
@@ -38,14 +42,22 @@
   {{#each this}}
     <div class="row">
       <div class="col s12 m6 l6" id="render-userstory">
-        <h6><b>{{title}}</b></h6>
-        <h6>{{date}}</h6>
-        <h6>{{story}}</h6>
-        <h6>{{tags:tag1}} {{tags:tag2}} {{tags:tag3}}</h6>
+        <ul>
+          <li><b>{{title}}</b></li>
+          <li>{{date}}</li>
+          <li>{{story}}</li>
+          {{#tags}}
+          <li>{{this.tag1}} {{this.tag2}} {{this.tag3}}</li>
+          {{/tags}}
+        </ul>
         <!-- <button id="edit-userstory-button" data-target="#edit-userstory-modal" class="btn-small modal-trigger">Edit</button> -->
         <!-- <a class="btn-small modal-trigger" href="#edit-story-modal">Edit</a> -->
-        <a class="modal-trigger" href="#edit-story-modal">Edit</a>
+        <a class="modal-trigger" href="#edit-story-modal" id="edit-modal-link">Edit</a>
       </div>
     </div>
   {{/each}}
 </script>
+
+<!-- {{#each movies}}
+    <li>Movie{{this.moviePositionInChapter}}: {{this.movieName}}</li>
+{{/each}} -->

@@ -136,25 +136,10 @@ function setNewStoryFormHandler() {
       // });
     });
 
-    getUserStories() 
+    getUserStories()
   });
 
 }
-
-    // var storyData = formObj;
-    // createStory(storyData, function(story) {
-    //   updateStoriesAndViews();
-      //}
-
-
-
-// $('#user-signup-modal').closeModal();
-// createUser(formObj, function(user) {
-//   console.log("form response:", user);
-//   // $("#user-signup-form").val();
-//   $( '#user-signup-form' ).each(function(){
-//     this.reset();
-//   });
 
 
 
@@ -182,7 +167,7 @@ function renderAllStories(data) {
 
 
 
-function handlebarsHelper(){
+function handlebarsGroupHelper(){
   Handlebars.registerHelper('grouped_each', function(every, context, options){
     var out = "", subcontext = [], i;
     if (context && context.length > 0){
@@ -198,16 +183,15 @@ function handlebarsHelper(){
     return out;
   });
 }
-  // $(document).ready;
-    // $list.empty();
-    // var story;
-    // for (var i = 0; i < stories.length; i++) {
-    //   story = stories[i];
-    //   $storyView = renderStory(story);
-    //   $list.append($storyView);
-    // }
 
-  // });
+
+// function handlebarsReverseHelper() {
+//   Handlebars.registerHelper('reverse', function(arr) {
+//     arr.reverse();
+//   });
+// }
+
+
 
 
 function updateAllStoriesAndViews() {
@@ -265,44 +249,11 @@ function updateUserStoriesAndViews() {
 
 
 
-// function handlebarsHelper(){
-//   Handlebars.registerHelper('grouped_each', function(every, context, options){
-//     var out = "", subcontext = [], i;
-//     if (context && context.length > 0){
-//       for (i=0; i < context.length; i++){
-//         if (i>0 && i % every === 0){
-//           out += options.fn(subcontext);
-//           subcontext = [];
-//         }
-//         subcontext.push(context[i]);
-//       }
-//       out += options.fn(subcontext);
-//     }
-//     return out;
-//   });
-// }
-  // $(document).ready;
-    // $list.empty();
-    // var story;
-    // for (var i = 0; i < stories.length; i++) {
-    //   story = stories[i];
-    //   $storyView = renderStory(story);
-    //   $list.append($storyView);
-    // }
-
-  // });
-
-
-
-
-
-
-
-
 
 $(function() {
   setCreateUserFormHandler();
-  handlebarsHelper();
+  handlebarsGroupHelper();
+
   setLogInFormHandler();
   setLogOutHandler();
   setNewStoryFormHandler();
@@ -312,3 +263,5 @@ $(function() {
   $('.modal-trigger').leanModal();
 
 });
+
+// handlebarsReverseHelper();
