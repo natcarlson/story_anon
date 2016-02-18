@@ -92,6 +92,7 @@ li {
   text-align: center;
   color: darkblue;
   border: 2px solid darkblue;
+<<<<<<< HEAD
   border-radius: 5px;
 }
 
@@ -108,6 +109,7 @@ li {
 #new-story-modal-submit {
   background-color: rgb(77, 149, 255);
   text-align: center;
+  border-radius: 5px;
 }
 
 #render-userstory {

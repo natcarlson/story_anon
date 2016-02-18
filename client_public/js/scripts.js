@@ -185,6 +185,7 @@ function handlebarsGroupHelper(){
 }
 
 
+
 // function handlebarsReverseHelper() {
 //   Handlebars.registerHelper('reverse', function(arr) {
 //     arr.reverse();
